@@ -20,14 +20,15 @@ def install_client
 end
 
 def mount_server
-  pid = spawn('cd ./assets && php -S 0.0.0.0:9999')
+  run 'mkdir /tmp/reader'
+  pid = spawn('cd /tmp/reader && php -S 192.168.2.100:9999')
   Process.detach(pid)
 end
 
 def send_image
   measure('Total:') do
     run "screencapture -o -l#{WINDOW_ID} #{SCREENSHOT}"
-    run "convert #{SCREENSHOT} #{CONVERT} #{SCREENSHOT}"
+    run "sips -r 270 #{SCREENSHOT}"
     run "curl #{HANDLER_URL}"
   end
 end

@@ -4,7 +4,7 @@ Mirror a host's tmux pane to e-reader
 
 ## Prerequisite
 
-OSX with tmux, imagemagick
+OSX with tmux
 KOBO H2O with koreader, Kobo Start Menu 09
 
 ## Usage

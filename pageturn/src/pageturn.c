@@ -34,7 +34,7 @@ void help(void)
 {
    printf(
       "\n"
-      "KOBO PageTurn 1.0 Usage:\n"
+      "KOBO PageTurn 1.1 Usage:\n"
       "d, space, enter => forward\n"
       "u => backward\n"
       "q => exit\n"
@@ -78,16 +78,12 @@ int main()
          case '\r':
          case '\n':
             printf("next\tkeycode=%d\n", ch);
-            SEND(EV_KEY, KEY_KATAKANA, 1)
-            SEND(EV_SYN, 0,  0)
-            SEND(EV_KEY, KEY_KATAKANA, 0)
+            SEND(EV_KEY, KEY_KATAKANA, 2)
             SEND(EV_SYN, 0,  0)
             break;
          case 'u':
             printf("prev\tkeycode=%d\n", ch);
-            SEND(EV_KEY, KEY_F1, 1)
-            SEND(EV_SYN, 0,  0)
-            SEND(EV_KEY, KEY_F1, 0)
+            SEND(EV_KEY, KEY_F1, 2)
             SEND(EV_SYN, 0,  0)
             break;
          default:

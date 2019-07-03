@@ -266,13 +266,19 @@ function Kobo:init()
         },
         event_map_adapter = {
             SleepCover = function(ev)
-                if self.input:isEvKeyRelease(ev) then
+                if self.input:isEvKeyPress(ev) then
+                    return "SleepCoverClosed"
+                elseif self.input:isEvKeyRelease(ev) then
+                    return "SleepCoverOpened"
+                elseif self.input:isEvKeyRepeat(ev) then
                     return Event:new("GotoViewRel", -1)
                 end
             end,
             LightButton = function(ev)
                 if self.input:isEvKeyRelease(ev) then
-                    return Event:new("GotoViewRel", 1)
+                    return "Light"
+                elseif self.input:isEvKeyRepeat(ev) then
+                  return Event:new("GotoViewRel", 1)
                 end
             end,
         }

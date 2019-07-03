@@ -270,9 +270,8 @@ function Kobo:init()
                     return "SleepCoverClosed"
                 elseif self.input:isEvKeyRelease(ev) then
                     return "SleepCoverOpened"
-                elseif self.input:isEvKeyRepeat(ev) then
-                    return Event:new("GotoViewRel", -1)
                 end
+                return Event:new("GotoViewRel", -1)
             end,
             LightButton = function(ev)
                 if self.input:isEvKeyRelease(ev) then
